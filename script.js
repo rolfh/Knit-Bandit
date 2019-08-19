@@ -71,6 +71,18 @@ var vm = new Vue({
         this.cellSize = tmpCellSize
         this.canvasResize()
       }, 0)
+    },
+    mouseDown() {
+      console.log(this.columns)
+
+      var x = Math.floor(rangeMap(mouseX, width, this.rows))
+      var y = Math.floor(rangeMap(mouseY, height, this.columns))
+
+      var activeBrushName = this.brushes.find(elem => {
+        return elem.name == this.brushes[this.activeBrush].name
+      }).name
+
+      Vue.set(this.board[x], y, activeBrushName)
     }
   }
 })
@@ -84,7 +96,9 @@ function setup() {
 }
 
 function draw() {
-  mouseDown()
+  if (mouseIsPressed && mouseX > 0) {
+    vm.mouseDown()
+  }
   background(255)
   fill(233)
   stroke(120)
@@ -111,19 +125,6 @@ function draw() {
   strokeWeight(1)
   stroke(255, 0, 0)
   line(vm.cellSize * vm.repeat, 0, vm.cellSize * vm.repeat, height)
-}
-
-function mouseDown() {
-  if (mouseX < 0 || !mouseIsPressed) return
-
-  var x = Math.floor(rangeMap(mouseX, width, vm.columns))
-  var y = Math.floor(rangeMap(mouseY, height, vm.rows))
-
-  var activeBrushName = vm.brushes.find(elem => {
-    return elem.name == vm.brushes[vm.activeBrush].name
-  }).name
-
-  Vue.set(vm.board[x], y, activeBrushName)
 }
 
 function rangeMap(input, inputMax, outputMax) {
