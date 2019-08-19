@@ -11,7 +11,6 @@ body {
 }
 #settings > label > span {
   text-align: right;
-  width: 100px;
   display: inline-block;
   margin-right: 10px;
 }
@@ -80,15 +79,25 @@ input[type='text'] {
 input[type='number'] {
   width: 50px;
 }
-#description span {
+.label-name {
+  width: 60px;
   display: inline-block;
-  width: 15px;
   margin-right: 10px;
+  text-align: right;
+}
+p {
+  margin: 0;
+}
+.brush-result {
+  display: none;
 }
 @media print {
   #settings,
   #brushes,
   input {
     display: none;
+  }
+  .brush-result {
+    display: inline;
   }
 }

@@ -26,7 +26,7 @@
       </div>
       <div id="settings">
         <label>
-          <span>Width</span>
+          <span class="label-name">Width</span>
           <input
             type="number"
             v-model.number="rows"
@@ -35,7 +35,7 @@
           />
         </label>
         <label>
-          <span>Height</span>
+          <span class="label-name">Height</span>
           <input
             type="number"
             v-model.number="columns"
@@ -44,7 +44,7 @@
           />
         </label>
         <label>
-          <span>Cellsize</span>
+          <span class="label-name">Cellsize</span>
           <input
             type="range"
             min="11"
@@ -54,7 +54,7 @@
           />
         </label>
         <label>
-          <span>Repeat</span>
+          <span class="label-name">Repeat</span>
           <input
             type="range"
             min="-1"
@@ -63,39 +63,17 @@
             @input="canvasResize"
           />
         </label>
-        <!-- <label>
-          <span>offsetX</span>
-          <input
-            type="range"
-            min="-3"
-            max="3"
-            step="0.01"
-            v-model.number="offsetX"
-            @input="canvasResize"
-          />
-        </label>
-        <label>
-          <span>offsetY</span>
-          <input
-            type="range"
-            min="-3"
-            max="3"
-            step="0.01"
-            v-model.number="offsetY"
-            @input="canvasResize"
-          />
-        </label> -->
       </div>
       <div id="description">
-        <!-- <h3>Beskrivelse</h3> -->
         <label
           v-for="brush in brushes"
           :key="brush.name"
           v-if="brush.name != ' '"
         >
           <p>
-            <span>{{ brush.name }}:</span>
+            <span class="label-name">{{ brush.name }}</span>
             <input type="text" v-model="brush[lang]" />
+            <span class="brush-result">{{ brush[lang] }}</span>
           </p>
         </label>
       </div>
