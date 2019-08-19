@@ -9,36 +9,44 @@ var vm = new Vue({
       offsetX: 0.13,
       offsetY: 0.03,
       repeat: -1,
+      lang: 'en',
       board: Array.from('!'.repeat(maxBoard)).map(width => {
         return Array.from(' '.repeat(maxBoard))
       }),
       brushes: [
         {
           name: '✕',
+          en: 'Cross',
           nb: 'Kryss'
         },
         {
           name: '●',
-          nb: 'Sirkel'
+          en: 'Circle black',
+          nb: 'Sirkel svart'
         },
         {
           name: '○',
-          nb: 'Sirkel'
+          en: 'Circle white',
+          nb: 'Sirkel hvit'
         },
         {
           name: '▧',
+          en: 'Dark',
           nb: 'Mørk'
         },
         {
           name: '◐',
+          en: 'Half cricle',
           nb: 'Halvsirkel'
         },
         {
           name: '▲',
+          en: 'Triangle',
           nb: 'Trekant'
         },
         {
           name: ' ',
+          en: 'Eraser',
           nb: 'Viskelær'
         }
       ],

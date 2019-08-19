@@ -9,9 +9,42 @@
   </head>
   <body>
     <div id="app">
+      <h1>Knit Bandit</h1>
+      <div id="toolsAndCanvas">
+        <div id="brushes">
+          <button
+            class="brush"
+            :class="{activeBrush: brushIndex == activeBrush}"
+            v-for="(brush, brushIndex) in brushes"
+            @click="activeBrush = brushIndex"
+          >
+            {{ brush.name }}
+          </button>
+          <button class="brush" @click="saveImg">📷</button>
+        </div>
+        <div id="canvasHolder"></div>
+      </div>
       <div id="settings">
         <label>
-          <span>Cellestørrelse</span>
+          <span>Width</span>
+          <input
+            type="number"
+            v-model.number="rows"
+            min="1"
+            @input="canvasResize"
+          />
+        </label>
+        <label>
+          <span>Height</span>
+          <input
+            type="number"
+            v-model.number="columns"
+            min="1"
+            @input="canvasResize"
+          />
+        </label>
+        <label>
+          <span>Cellsize</span>
           <input
             type="range"
             min="11"
@@ -21,7 +54,7 @@
           />
         </label>
         <label>
-          <span>Repeter</span>
+          <span>Repeat</span>
           <input
             type="range"
             min="-1"
@@ -52,38 +85,6 @@
             @input="canvasResize"
           />
         </label> -->
-        <label>
-          <span>Bredde</span>
-          <input
-            type="number"
-            v-model.number="rows"
-            min="1"
-            @input="canvasResize"
-          />
-        </label>
-        <label>
-          <span>Høyde</span>
-          <input
-            type="number"
-            v-model.number="columns"
-            min="1"
-            @input="canvasResize"
-          />
-        </label>
-      </div>
-      <div id="toolsAndCanvas">
-        <div id="brushes">
-          <button
-            class="brush"
-            :class="{activeBrush: brushIndex == activeBrush}"
-            v-for="(brush, brushIndex) in brushes"
-            @click="activeBrush = brushIndex"
-          >
-            {{ brush.name }}
-          </button>
-          <button class="brush" @click="saveImg">📷</button>
-        </div>
-        <div id="canvasHolder"></div>
       </div>
       <div id="description">
         <!-- <h3>Beskrivelse</h3> -->
@@ -94,7 +95,7 @@
         >
           <p>
             <span>{{ brush.name }}:</span>
-            <input type="text" v-model="brush.nb" />
+            <input type="text" v-model="brush[lang]" />
           </p>
         </label>
       </div>

@@ -11,7 +11,7 @@ body {
 }
 #settings > label > span {
   text-align: right;
-  width: 120px;
+  width: 100px;
   display: inline-block;
   margin-right: 10px;
 }
