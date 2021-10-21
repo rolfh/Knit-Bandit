@@ -6,6 +6,7 @@ var vm = new Vue({
       rows: 16,
       columns: 16,
       cellSize: 20,
+      cellWidth: 40,
       offsetX: 0.13,
       offsetY: 0.03,
       repeat: -1,
